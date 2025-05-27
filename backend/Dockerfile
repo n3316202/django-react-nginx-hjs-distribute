@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install gunicorn  # ✅ 이 줄이 꼭 필요
+RUN pip install gunicorn  # ✅ 이 줄이 꼭 필용
 
 COPY . .
 
