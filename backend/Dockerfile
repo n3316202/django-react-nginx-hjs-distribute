@@ -1,8 +1,8 @@
 FROM python:3.10-slim
 
-WORKDIR /app
+WORKDIR /app/backend
 
-COPY requirements.txt .
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn  # ✅ 이 줄이 꼭 필요
 
