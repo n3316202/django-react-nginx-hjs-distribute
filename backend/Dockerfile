@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 WORKDIR /app/backend
 
-# 필수 빌드 도구 설치 (mysqlclient 설치용, pillow 빌드용)
+# 필수 빌드 도구 설치 (mysqlclient 설치용, pillow 빌드)
 RUN apt-get update && apt-get install -y \
     gcc \
     default-libmysqlclient-dev \
