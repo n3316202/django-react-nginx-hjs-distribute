@@ -1,0 +1,44 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - dev_3_깃허브_액션-2025-05-27
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'
+
+    - name: Build React frontend
+      working-directory: ./frontend
+      run: |
+        npm install
+        npm run build
+
+    - name: Set up SSH agent with private key
+      uses: webfactory/ssh-agent@v0.8.1
+      with:
+        ssh-private-key: ${{ secrets.EC2_KEY }}
+
+    - name: Sync files to EC2
+      run: |
+        rsync -avz --exclude node_modules --exclude .git ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/django-react-nginx-hjs-distribute
+      env:
+        RSYNC_RSH: ssh
+
+    - name: SSH and deploy on EC2
+      run: |
+        ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          cd ~/django-react-nginx-hjs-distribute
+          docker-compose down
+          docker-compose up -d --build
+        EOF
