@@ -3,8 +3,8 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      #- dev_3_깃허브_액션-2025-05-27 
-      - main  #dev_4 프로그램중 github action 안되게
+      - dev_6_COSR_해결을위한_setting_파일분리-2025-05-28
+      #- main  #dev_4 프로그램중 github action 안되게
 jobs:
   deploy:
     name: Deploy to EC2
