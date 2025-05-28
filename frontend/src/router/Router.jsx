@@ -1,15 +1,31 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
+import MainPage from '../ui/pages/MainPage';
+
+import MainLayout from '../ui/layouts/MainLayout';
+import CategoryPage from '../ui/pages/CategoryPage';
 
 
 //dev_5
-const MainLayout = () => {
-  return (
-    <div className='vh-100 d-flex flex-column justify-content-between'>
-      {/* dev_3_Fruit */}
-      <Outlet />
-    </div>
-  )
-}
+const routes = [
+  {
+    path: '/',
+    element: <MainLayout />,
+    loader: () => '메인 레이아웃',
+    children: [
+      {
+        path: '', 
+        element: <MainPage></MainPage>,
+        loader: () => '메인페이지',
+      },
+      {
+        path: 'categories', 
+        element: <CategoryPage></CategoryPage>,
+        loader: () => '메인페이지',
+      },    
+    ]  
+  },
+];
 
-export default MainLayout
+const router = createBrowserRouter(routes)
+
+export { router, routes }
