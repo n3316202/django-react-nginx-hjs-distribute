@@ -3,8 +3,8 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - dev_3_깃허브_액션-2025-05-27 
-
+      #- dev_3_깃허브_액션-2025-05-27 
+      - main
 jobs:
   deploy:
     name: Deploy to EC2
