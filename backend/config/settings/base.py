@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",  # dev_4
     "api",  # dev_4
+    "corsheaders", #dev_6
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware", #dev_6 제일위에 순서 중요
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
