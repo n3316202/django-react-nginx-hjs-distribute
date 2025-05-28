@@ -19,14 +19,13 @@ jobs:
           npm install
           npm run build
 
-   
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          script: mkdir -p /home/ubuntu/django-react-nginx-hjs-distribute
+          script: mkdir -p /home/ubuntu/django-react-nginx-hjs-distribute/backend/
                   echo "$DJANGO_ENV_PROD_CONTENTS" > /home/ubuntu/django-react-nginx-hjs-distribute/backend/.env.prod
       
       - name: Rsync source code to EC2
