@@ -55,9 +55,12 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          envs: DJANGO_ENV_PROD_CONTENTS          
+          envs: DJANGO_ENV_PROD_CONTENTS
           script: |
-            bash -c 'echo "📄 출력 시작"; echo "$DJANGO_ENV_PROD_CONTENTS"; echo "$DJANGO_ENV_PROD_CONTENTS" > /home/ubuntu/django-react-nginx-hjs-distribute/backend/.env.prod'
+            echo "🔍 .env.prod 생성 전 환경변수 확인"
+            bash -c 'if [ -z "$DJANGO_ENV_PROD_CONTENTS" ]; then echo "❌ 환경변수 없음"; else echo "✅ 환경변수 있음"; fi'
+            echo "$DJANGO_ENV_PROD_CONTENTS" > /home/ubuntu/django-react-nginx-hjs-distribute/backend/.env.prod
+            echo "✅ .env.prod 생성 완료"
       
       # ✅ 4. frontend 디렉토리에서 .env.production 생성 및 빌드 수행
       - name: Build Vite frontend on EC2
