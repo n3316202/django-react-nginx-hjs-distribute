@@ -25,10 +25,10 @@ RUN pip install gunicorn
 COPY . .
 
 # 엔트리포인트 스크립트 복사 및 실행 권한 부여
-# COPY ./config/docker/entrypoint.prod.sh /app/entrypoint.prod.sh
-# RUN chmod +x /app/entrypoint.prod.sh
+COPY ./config/docker/entrypoint.prod.sh /app/entrypoint.prod.sh
+RUN chmod +x /app/entrypoint.prod.sh
 
 # # 엔트리포인트 설정
-# ENTRYPOINT ["/app/entrypoint.prod.sh"]
+ENTRYPOINT ["/app/entrypoint.prod.sh"]
 
 CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
