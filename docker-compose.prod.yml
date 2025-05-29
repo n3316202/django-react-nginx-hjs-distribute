@@ -23,13 +23,13 @@ services: # 컨테이너 설정
         container_name: nginx
         build: ./nginx # 여기에는 Dockerfile이 있으며 이 도커파일에서 nginx에 대한 상위 설정파일인 nginx.conf가 있음
         volumes:
-            - static:/home/app/web/static/  # Django collectstatic으로 모은 static 파일
-            - media:/home/app/web/media/    # 사용자 업로드 media 파일           
+            - ./backend/staticfiles:/home/app/web/static
+            - ./backend/media:/home/app/web/media         
         ports:
             - '80:80'
         depends_on:
             - backend # 웹 컨테이너에 의존 (그래서 web 컨테이너를 먼저 띄운 후, nginx 컨테이너를 띄움)
 
-volumes:
-    static:
-    media:
+# volumes:
+#     static:
+#     media:
