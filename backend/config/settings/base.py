@@ -105,13 +105,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# dev_7 배포용
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+# URL 경로를 프로젝트 경로와의 매핑
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# Media files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-KR' #dev_7
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul' #dev_7
 
 USE_I18N = True
 
