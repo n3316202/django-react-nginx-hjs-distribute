@@ -9,7 +9,7 @@ services: # 컨테이너 설정
         environment:
             DJANGO_SETTINGS_MODULE: config.settings.prod
         env_file:
-            - .env
+            - ./backend/.env.prod
         volumes:
             - static:/home/app/web/static
             - media:/home/app/web/media
