@@ -1,0 +1,48 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - dev_4_깃허브_액션_앱추가_메인페이지_헬로우월드_제이슨출력-2025-05-27
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build React frontend
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm run build
+
+      - name: Create remote directory on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: mkdir -p /home/ubuntu/django-react-nginx-hjs-distribute
+
+      - name: Rsync source code to EC2
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzr --delete
+          remote_path: /home/ubuntu/django-react-nginx-hjs-distribute/
+          remote_host: ${{ secrets.EC2_HOST }}
+          remote_user: ${{ secrets.EC2_USER }}
+          remote_key: ${{ secrets.EC2_KEY }}
+
+      - name: Run Docker Compose on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ubuntu/django-react-nginx-hjs-distribute
+            docker-compose down
+            docker-compose up -d --build
