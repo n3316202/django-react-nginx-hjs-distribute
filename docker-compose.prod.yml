@@ -1,6 +1,6 @@
 version: '3' # 버전 지정
 services: # 컨테이너 설정
-    web: # 컨테이너1 : web
+    backend: # 컨테이너1 : web
         container_name: backend
         build:
             context: ./
