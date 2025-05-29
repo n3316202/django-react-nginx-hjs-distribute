@@ -14,7 +14,7 @@ RUN apk update
 RUN apk add postgresql-dev gcc python3 python3-dev musl-dev zlib-dev jpeg-dev  libc-dev libpcap-dev  linux-headers mariadb-dev build-base  && pip3 install mysqlclient
 
 # install dependencies
-COPY ./requirements.txt .
+COPY ./backend/requirements.txt .
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 # FINAL #
@@ -53,10 +53,10 @@ RUN pip install --no-cache /wheels/*
 RUN apk del build-deps
 
 # copy entrypoint-prod.sh
-COPY ./config/docker/entrypoint.prod.sh $APP_HOME
+COPY ./backend/config/docker/entrypoint.prod.sh $APP_HOME
 
 # copy project
-COPY . $APP_HOME
+COPY ./backend $APP_HOME
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
