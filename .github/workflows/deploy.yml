@@ -3,8 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      #- dev_3_깃허브_액션-2025-05-27 
-      - main  #dev_4 프로그램중 github action 안되게
+      - dev_4_깃허브_액션_앱추가_메인페이지_헬로우월드_제이슨출력-2025-05-27
 jobs:
   deploy:
     name: Deploy to EC2
@@ -19,11 +18,6 @@ jobs:
         run: |
           npm install
           npm run build
-
-      - name: Create .env file (if needed)
-        run: |
-          touch .env
-          echo "${{ secrets.ENV_VARS }}" >> .env
 
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master
