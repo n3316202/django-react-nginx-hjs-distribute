@@ -10,27 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        #GitHub Actions는 리포지토리 코드를 자동으로 불러오지 않기 때문
+        #즉, 워크플로우에서 Python, Node, Django 등으로 무언가 빌드/테스트/배포하려면 먼저 코드를 내려받아야 하는데, 
+        #그 역할을 이 액션이 수행
       - name: Checkout repository
         uses: actions/checkout@v3
 
          
-       # 1. EC2에 기존 프로젝트 디렉토리가 있으면 삭제(나중에 삭제)    
-      - name: Clean old project directory on EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          script: sudo rm -rf /home/ubuntu/django-react-nginx-hjs-distribute
-
-      # 1. EC2에 프로젝트 디렉토리 생성 (최상위 폴더까지만)
+       # 1. EC2에 프로젝트 디렉토리 생성 (최상위 폴더까지만)
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          script: mkdir -p /home/ubuntu/django-react-nginx-hjs-distribute
+          script: |
+            sudo rm -rf /home/ubuntu/django-react-nginx-hjs-distribute
+            mkdir -p /home/ubuntu/django-react-nginx-hjs-distribute
             
       
       # 2. 코드 EC2로 전송
