@@ -124,7 +124,7 @@ print("테스트-3",os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 STATIC_URL = "/static/"
 #STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # media 경로 설정 (사용자 업로드 파일)
 MEDIA_URL = '/media/'

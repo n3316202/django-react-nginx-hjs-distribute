@@ -11,7 +11,7 @@ services: # 컨테이너 설정
         env_file:
             - ./backend/.env.prod
         volumes:
-            - ./backend/static:/home/app/web/static
+            - ./backend/staticfiles:/home/app/web/staticfiles
             - ./backend/media:/home/app/web/media
         expose:
             - 8888
