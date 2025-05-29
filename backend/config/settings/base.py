@@ -122,11 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 print("테스트-3",os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic 결과물 경로
-
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # media 경로 설정 (사용자 업로드 파일)
