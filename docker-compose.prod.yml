@@ -26,8 +26,8 @@ services: # 컨테이너 설정
             dockerfile: ./frontend/Dockerfile
         expose:
             - 3000
-        #volumes:
-         # - node_modules:/apps/frontend/node_modules
+        volumes:
+          - frontend_dist:/apps/frontend/dist
         # env_file:
         # - ./.env
 
@@ -38,7 +38,7 @@ services: # 컨테이너 설정
         volumes:
             - static:/home/app/web/static
             - media:/home/app/web/media
-            - ./frontend/dist:/usr/share/nginx/html           
+            - frontend_dist:/usr/share/nginx/html           
         ports:
             - '80:80'
         depends_on:
@@ -47,3 +47,4 @@ services: # 컨테이너 설정
 volumes:
     static:
     media:
+    frontend_dist:
