@@ -5,8 +5,6 @@ WORKDIR /app/frontend
 # 의존성 설치 및 빌드
 COPY ./frontend/package*.json ./
 RUN npm install
-
-COPY ./frontend .
 RUN npm run build
 
 # serve 설치 (정적 파일 서빙용)
