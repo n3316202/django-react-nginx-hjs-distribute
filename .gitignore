@@ -80,3 +80,6 @@ parts/
 sdist/
 var/
 *.egg
+
+# 예외적으로 .env.example 파일은 포함
+!sample.env
