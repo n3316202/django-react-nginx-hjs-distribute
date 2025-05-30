@@ -3,10 +3,8 @@ FROM node:22.14.0-alpine
 WORKDIR /app/frontend
 
 # 의존성 설치 및 빌드
-COPY ./frontend/package*.json ./
-RUN npm install
-
 COPY ./frontend .
+RUN npm install
 
 RUN npm run build
 
