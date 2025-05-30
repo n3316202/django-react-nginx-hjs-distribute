@@ -10,4 +10,4 @@ COPY ./frontend .
 RUN npm run build
 
 #Vite 용
-# CMD [ "npm", "run", "build" ] 위의 
+CMD [ "npm", "start" ] 
