@@ -3,9 +3,9 @@ import http from './HttpCommon';
 //#dev_5
 //http://127.0.0.1:8000/api/categories/
 export const getCategories = () => {
-  return http.get('/api/categories/');
+  return http.get('/categories/');
 };
 
 export const getCategoryById = (id) => {
-  return http.get(`/api/categories/${id}/`);
+  return http.get(`/categories/${id}/`);
 };
