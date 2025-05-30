@@ -9,5 +9,8 @@ RUN npm install
 COPY ./frontend .
 RUN npm run build
 
-#Vite 용
-CMD [ "npm", "start" ] 
+# serve 설치 (정적 파일 서빙용)
+#RUN npm install -g serve
+
+# 정적 파일 서빙
+#CMD ["serve", "-s", "dist", "-l", "3000"]
