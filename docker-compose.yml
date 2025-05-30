@@ -14,6 +14,23 @@ services:
       - media:/home/app/web/media
     expose:
       - 8000
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql
 
   frontend:
     build:
@@ -41,3 +58,4 @@ services:
 volumes:
     static:
     media:
+    db-data:

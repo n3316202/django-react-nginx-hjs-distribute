@@ -37,3 +37,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Using Mysql
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'distribute',
+        'USER': 'distribute',
+        'PASSWORD': 'distribute',
+        'HOST': 'db',
+        'PORT': '3306',
+    }
+}

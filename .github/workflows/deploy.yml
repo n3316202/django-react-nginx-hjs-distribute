@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - dev_6_2_파일분리_완료후_정적리소스처리-2025-05-31
+      - dev_6_3_DB_변경-2025-05-31
 jobs:
   deploy:
     name: Deploy to EC2
