@@ -1,13 +1,13 @@
-FROM node:22.14.0 as build
+FROM node:22.14.0
 
 WORKDIR /app/frontend
 
-COPY package.json package-lock.json ./
+# 의존성 설치 및 빌드
+COPY ./frontend/package*.json ./
 RUN npm install
 
-COPY . .
+COPY ./frontend .
 RUN npm run build
 
-#EXPOSE 3000
-
-#CMD ["npm", "start"]
+#Vite 용
+# CMD [ "npm", "run", "build" ] 위의 

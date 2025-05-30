@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.12.0-alpine as builder
+FROM python:3.12 as builder
 
 # set work directory
 WORKDIR /usr/src/app
@@ -19,7 +19,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 
 # FINAL #
 #python:3.8.3-alpine은 Python 3.8.3을 포함한 Alpine Linux 기반의 경량 이미지를 의미함
-FROM python:3.12.0-alpine
+FROM python:3.12
 
 # create directory for the app user
 RUN mkdir -p /home/app

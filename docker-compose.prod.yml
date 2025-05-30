@@ -19,13 +19,25 @@ services: # 컨테이너 설정
             - sh
             - config/docker/entrypoint.prod.sh
 
+    frontend:
+        container_name: frontend
+        build: 
+            context: ./
+            dockerfile: ./frontend/Dockerfile
+        ports:
+        - "3000:3000"
+        # volumes:
+        # - node_modules:/apps/frontend/node_modules
+        # env_file:
+        # - ./.env
+
+
     nginx: # 컨테이너2 : nginx
         container_name: nginx
         build: ./nginx # 여기에는 Dockerfile이 있으며 이 도커파일에서 nginx에 대한 상위 설정파일인 nginx.conf가 있음
         volumes:
             - static:/home/app/web/static
-            - media:/home/app/web/media
-            - ./frontend/dist:/usr/share/nginx/html  # ✅ Vite 결과물 마운트 정적 파일을 Nginx 기본 root로 설정     
+            - media:/home/app/web/media           
         ports:
             - '80:80'
         depends_on:
