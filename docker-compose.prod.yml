@@ -42,7 +42,7 @@ services: # 컨테이너 설정
             - '80:80'
         depends_on:
             - backend # 웹 컨테이너에 의존 (그래서 web 컨테이너를 먼저 띄운 후, nginx 컨테이너를 띄움)
-
+            - frontend
 volumes:
     static:
     media:
