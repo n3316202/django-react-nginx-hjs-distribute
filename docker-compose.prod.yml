@@ -1,23 +1,23 @@
 version: '3' # 버전 지정
 services: # 컨테이너 설정
-    backend: # 컨테이너1 : backend
-        container_name: backend
-        build:
-            context: ./
-            dockerfile: Dockerfile.prod # 배포용인 Dockerfile.prod
-        command: gunicorn config.wsgi:application --bind 0.0.0.0:8888 # 배포에서는 gunicorn으로 웹서버(nginx) -> 장고 연결
-        environment:
-            DJANGO_SETTINGS_MODULE: config.settings.prod
-        env_file:
-            - ./backend/.env.prod
-        volumes:
-            - static:/home/app/web/staticfiles
-            - media:/home/app/web/media
-        expose:
-            - 8888
-        entrypoint:
-            - sh
-            - config/docker/entrypoint.prod.sh
+    # backend: # 컨테이너1 : backend
+    #     container_name: backend
+    #     build:
+    #         context: ./
+    #         dockerfile: Dockerfile.prod # 배포용인 Dockerfile.prod
+    #     command: gunicorn config.wsgi:application --bind 0.0.0.0:8888 # 배포에서는 gunicorn으로 웹서버(nginx) -> 장고 연결
+    #     environment:
+    #         DJANGO_SETTINGS_MODULE: config.settings.prod
+    #     env_file:
+    #         - ./backend/.env.prod
+    #     volumes:
+    #         - static:/home/app/web/staticfiles
+    #         - media:/home/app/web/media
+    #     expose:
+    #         - 8888
+    #     entrypoint:
+    #         - sh
+    #         - config/docker/entrypoint.prod.sh
 
     frontend:
         container_name: frontend
