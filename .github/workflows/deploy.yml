@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - dev_8_again_리액트_추가-2025-05-30
+      #- dev_8_again_리액트_추가-2025-05-30
 jobs:
   deploy:
     name: Deploy to EC2
