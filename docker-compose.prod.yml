@@ -27,7 +27,7 @@ services: # 컨테이너 설정
         expose:
             - 3000
         volumes:
-          - frontend_dist:/apps/frontend/dist
+          - frontend_dist:/app/frontend/dist
         # env_file:
         # - ./.env
 
