@@ -27,8 +27,7 @@ services: # 컨테이너 설정
         ports:
         - "3000:3000"
         volumes:
-            - ./frontend/dist:/usr/share/nginx/html
-        # - node_modules:/apps/frontend/node_modules
+         # - node_modules:/apps/frontend/node_modules
 
         # env_file:
         # - ./.env
@@ -39,7 +38,8 @@ services: # 컨테이너 설정
         build: ./nginx # 여기에는 Dockerfile이 있으며 이 도커파일에서 nginx에 대한 상위 설정파일인 nginx.conf가 있음
         volumes:
             - static:/home/app/web/static
-            - media:/home/app/web/media           
+            - media:/home/app/web/media
+            - ./frontend/dist:/usr/share/nginx/html           
         ports:
             - '80:80'
         depends_on:
