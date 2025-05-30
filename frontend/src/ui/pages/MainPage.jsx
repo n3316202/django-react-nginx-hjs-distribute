@@ -6,7 +6,7 @@ const MainPage = () => {
   return (
   <>
   <div>MainPage: 안녕하세요</div>
-  <Link to="/api/categories">카테고리 확인</Link>
+  <Link to="/categories">카테고리 확인</Link>
   </>
   
   )
