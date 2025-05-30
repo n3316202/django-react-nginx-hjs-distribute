@@ -1,16 +1,30 @@
-FROM node:22.14.0-alpine
+# 1단계: Node로 빌드
+FROM node:22.14.0-alpine AS build
 
-WORKDIR /app/frontend
+WORKDIR /app
 
-# 의존성 설치 및 빌드
-COPY ./frontend/package*.json ./
+COPY ./package*.json ./
 RUN npm install
 
-
-COPY ./frontend .
+COPY ./ .
 RUN npm run build
 
-# serve 설치 (정적 파일 서빙용)
-#RUN npm install -g serve
-# 정적 파일 서빙
-#CMD ["serve", "-s", "dist", "-l", "3000"]
+
+# 2단계: Nginx로 정적 파일 서빙
+FROM nginx:stable-alpine
+
+# 기본 설정 제거 (sites-enabled 디렉토리는 Debian 계열, Alpine에선 필요 없음)
+# RUN rm -rf /etc/nginx/sites-enabled/default  <- Alpine에는 해당 디렉토리 없음. 제거 OK.
+
+# Nginx 설정 복사
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# 정적 파일 복사
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# frontend 포트
+EXPOSE 3000
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]
