@@ -10,7 +10,7 @@ COPY ./frontend .
 RUN npm run build
 
 # serve 설치 (정적 파일 서빙용)
-#RUN npm install -g serve
+RUN npm install -g serve
 
 # 정적 파일 서빙
-#CMD ["serve", "-s", "dist", "-l", "3000"]
+CMD ["serve", "-s", "dist", "-l", "3000"]
