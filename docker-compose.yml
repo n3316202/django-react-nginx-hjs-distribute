@@ -23,7 +23,7 @@ services:
     ports:
       - "3306:3306"
     env_file:
-      - ./.env
+      - ./sample.env
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
