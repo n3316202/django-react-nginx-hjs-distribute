@@ -19,4 +19,5 @@ from decouple import config
 #     config('CSRF_TRUSTED_ORIGIN'),
 # ]
 
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
