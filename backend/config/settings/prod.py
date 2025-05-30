@@ -5,17 +5,18 @@
 from .base import *
 from decouple import config
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
-#SECRET_KEY = config('DJANGO_SECRET_KEY')
+# #SECRET_KEY = config('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split(',')
+# ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split(',')
 
-CORS_ALLOWED_ORIGINS = [
-    config('CORS_ALLOWED_ORIGIN'),
-]
+# CORS_ALLOWED_ORIGINS = [
+#     config('CORS_ALLOWED_ORIGIN'),
+# ]
 
-CSRF_TRUSTED_ORIGINS = [
-    config('CSRF_TRUSTED_ORIGIN'),
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     config('CSRF_TRUSTED_ORIGIN'),
+# ]
 
+ALLOWED_HOSTS = ["*"]
