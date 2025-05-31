@@ -25,6 +25,7 @@ python manage.py migrate --no-input
 # ✅ Django 마이그레이션 및 static 파일 수집
 python manage.py collectstatic --no-input #dev_6_2
 
+
 #dev_6_4 커맨드 객체 추가
 # ✅ 슈퍼유저 생성
 echo "👤 Creating superuser..."
