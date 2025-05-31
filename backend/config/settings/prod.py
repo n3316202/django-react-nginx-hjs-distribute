@@ -22,6 +22,12 @@ from decouple import config
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
+#dev_6_4
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://52.79.37.117:8080",
+# ]
+
 #dev_6_2
 import os
 
