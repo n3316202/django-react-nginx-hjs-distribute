@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - dev_6_3_DB_변경-2025-05-31
+      - dev_6_4_root_계정_자동화-2025-05-31
 jobs:
   deploy:
     name: Deploy to EC2
