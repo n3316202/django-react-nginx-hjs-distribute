@@ -26,9 +26,10 @@ python manage.py migrate --no-input
 python manage.py collectstatic --no-input #dev_6_2
 
 #dev_6_4 커맨드 객체 추가
-echo "Creating superuser..."
-python manage.py superuser || true
-echo "Superuser created"
+# ✅ 슈퍼유저 생성
+echo "👤 Creating superuser..."
+python manage.py superuser || echo "⚠️  Superuser creation skipped or failed."
+echo "✅ Superuser 처리 완료"
 
 
 # ✅ 명령어 실행
