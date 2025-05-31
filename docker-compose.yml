@@ -24,11 +24,14 @@ services:
       - "3306:3306"
     env_file:
       - ./sample.env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:    
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: distribute
+      MYSQL_USER: distribute
+      MYSQL_PASSWORD: distribute
     volumes:
       - db-data:/var/lib/mysql
 
